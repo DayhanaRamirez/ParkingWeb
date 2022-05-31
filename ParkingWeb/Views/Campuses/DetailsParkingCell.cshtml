@@ -1,0 +1,15 @@
+﻿@model ParkingWeb.Data.Entities.ParkingCell
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center">Detalles</h1>
+
+<div>
+    <partial name="_ParkingCellDetails"/>    
+</div>
+<div class="text-center">
+    <a asp-action="EditParkingCell" asp-route-id="@Model?.Id" class="btn btn-success"><i class="fa-solid fa-pen"></i> Editar</a>
+    <a asp-action="DetailsParkingLot" asp-route-id="@Model?.ParkingLot.Id" class="btn btn-dark"><i class="fa-solid fa-rotate-left"></i>  Regresar</a>
+</div>

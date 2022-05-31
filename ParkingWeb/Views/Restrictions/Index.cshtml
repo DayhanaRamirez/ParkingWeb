@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ParkingWeb.Data.Entities.Restriction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="text-center">Restricciones</h1>
+                <p class="text-center m-3">
+                    <a asp-action="Create" class="btn btn-outline-primary"><i class="fa-solid fa-ban"></i> Crear nueva restricción</a>
+                </p>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Day)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Car1)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Car2)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Motorcycle1)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Motorcycle2)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Day)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Car1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Car2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Motorcycle1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Motorcycle2)
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark"><i class="fa-solid fa-info"></i></a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark"><i class="fa-solid fa-pen"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-dark"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#MyTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+            "aLengthMenu": [
+                [5, 25, 50, 100, 200, -1],
+                [5, 25, 50, 100, 200, "Todos"]
+            ]
+        });
+    });
+</script>
+}
+
+

@@ -1,0 +1,32 @@
+﻿@model ParkingWeb.Data.Entities.Campus
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Editar</h1>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ParkingLots" />
+            <partial name="_Campus" />
+
+            <div class="form-group mt-4 text-center">
+                <button input type="submit" value="Guardar" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i>
+ Guardar</button>
+                <a asp-action="Index" class="btn btn-dark"><i class="fa-solid fa-rotate-left"></i> Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

@@ -1,0 +1,28 @@
+﻿@model ParkingWeb.Models.ParkingCellViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center">Crear</h1>
+<h4 class="text-center">Celda de parqueo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddParkingCell">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ParkingLotId" />
+            <partial name="_ParkingCell" />
+            <div class="form-group mt-4 text-center">
+                <button input type="submit" value="Crear" class="btn btn-success"><i class="fa-solid fa-plus"></i> Crear</button>
+                <a asp-action="DetailsParkingLot" asp-route-id="@Model.ParkingLotId" class="btn btn-dark"> <i class="fa-solid fa-rotate-left"></i>Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
