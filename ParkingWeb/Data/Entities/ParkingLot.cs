@@ -19,5 +19,7 @@ namespace ParkingWeb.Data.Entities
         public int ParkingCellsNumber => ParkingCells == null ? 0 : ParkingCells.Count;
 
         public VehicleType VehicleType { get; set; }
+
+        public ICollection<ParkingLotRestriction> ParkingLotRestrictions { get; set; }
     }
 }

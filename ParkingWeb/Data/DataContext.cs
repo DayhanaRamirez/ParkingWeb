@@ -22,6 +22,8 @@ namespace ParkingWeb.Data
 
         public DbSet<Restriction> Restrictions { get; set; }
 
+        public DbSet<ParkingLotRestriction> ParkingLotRestrictions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -31,6 +33,7 @@ namespace ParkingWeb.Data
             modelBuilder.Entity<Campus>().HasIndex(c => c.Name).IsUnique();
             modelBuilder.Entity<ParkingLot>().HasIndex("Name", "CampusId").IsUnique();
             modelBuilder.Entity<ParkingCell>().HasIndex("Name", "ParkingLotId").IsUnique();
+            modelBuilder.Entity<ParkingLotRestriction>().HasIndex("ParkingLotId", "RestrictionId").IsUnique();
         }
 
     }

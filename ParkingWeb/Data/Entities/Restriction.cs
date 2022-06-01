@@ -30,5 +30,7 @@ namespace ParkingWeb.Data.Entities
         [MaxLength(1, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Motorcycle2 { get; set; }
+
+        public ICollection<ParkingLotRestriction> ParkingLotRestrictions { get; set; }
     }
 }
